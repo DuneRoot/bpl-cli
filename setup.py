@@ -24,7 +24,7 @@ packages = [
 
 setuptools.setup(
     name="bpl-client",
-    version="0.0.6",
+    version="0.0.7",
     author="Alistair O'Brien",
     author_email="alistair.o'brien@ellesmere.com",
     description="A CLI Client for the Blockpool Blockchain.",
