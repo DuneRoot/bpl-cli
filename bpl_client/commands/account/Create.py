@@ -12,6 +12,17 @@ from bpl_client.commands.Command import Command
 class Create(Command):
 
     def run(self):
+        """
+        Run method for account create command
+        Generates a secret passphrase using BIP39 mnemonic generator.
+        Private and public keys are then calculated using bpl_lib.crypto.Keys and
+        the address is generate from the secret passphrase using bpl_lib.address.Address.
+        The secret passphrase, private key, public key and address are then displayed in a
+        ascii_table.Table object.
+
+        :return: (None)
+        """
+
         NetworkInterface.use(NetworkConfig.get_peer())
 
         secret_passphrase = Mnemonic("english").generate(256)
@@ -24,4 +35,4 @@ class Create(Command):
         })
 
         print("\nAccount")
-        print(Table([account.headers(), account.values()]))
+        print(Table([account.names(), account.values()]))
