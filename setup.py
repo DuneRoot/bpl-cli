@@ -7,7 +7,8 @@ requires = [
     "docopt",
     "bpl-lib>=0.0.14",
     "bpl-api",
-    "ascii-table"
+    "ascii-table",
+    "mnemonic"
 ]
 
 packages = [
