@@ -9,6 +9,16 @@ from bpl_client.commands.Command import Command
 class Peers(Command):
 
     def run(self):
+        """
+        Run method for network peers command.
+        Fetches peers from peer using bpl_api.
+        If request is unsuccessful then a BPLClientNetworkException is raised.
+        Otherwise filter peers based on response status of peers and
+        then display the filtered peers using an ascii_table.Table object.
+
+        :return: (None)
+        """
+
         peers = Client(NetworkConfig.get_peer()).api("peers").all_peers(limit=100)
 
         if not peers["success"]:
