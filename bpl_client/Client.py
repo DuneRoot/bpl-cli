@@ -6,6 +6,7 @@ Usage:
   bpl-cli network config show
   bpl-cli network peers
   bpl-cli network status
+  bpl-cli account create
   bpl-cli account status <address>
   bpl-cli account transactions <address>
   bpl-cli account send <amount> <recipient>
