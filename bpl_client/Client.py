@@ -30,12 +30,20 @@ import json
 
 from bpl_client.helpers.Constants import COMMANDS_JSON
 from bpl_client.helpers.Util import read_file
+from bpl_client import __version__
 
 
 class Client:
 
-    def __init__(self, version=0):
-        self._options = docopt(__doc__, version=version)
+    def __init__(self):
+        """
+        Client Class.
+
+        Retrieves options from docopt. Options are then filtered using data stored in commands.json.
+        Command is then imported and instantiated.
+        """
+
+        self._options = docopt(__doc__, version=__version__)
         self._arguments = {
             k: v for k, v in self._options.items()
             if not isinstance(v, bool)
