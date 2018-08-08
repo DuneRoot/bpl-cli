@@ -2,7 +2,7 @@ class Command:
 
     def __init__(self, arguments):
         """
-        Constructor for command parent class
+        Command Constructor
 
         :param arguments: Contains list of arguments parsed from docopt (list)
         """
@@ -10,4 +10,10 @@ class Command:
         self._arguments = arguments
 
     def run(self):
+        """
+        Abstract method run for command
+
+        :return: (None)
+        """
+
         raise NotImplementedError
