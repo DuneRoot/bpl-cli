@@ -1,20 +1,36 @@
-from ascii_table import Table
-from bpl_api import Client
 from bpl_lib.network import Network as NetworkInterface
+from ascii_table import Table
 from bpl_lib.time import Time
+from bpl_api import Client
 
-from bpl_client.commands.Command import Command
 from bpl_client.helpers.Exceptions import BPLClientAccountsException
 from bpl_client.network.NetworkConfig import NetworkConfig
+from bpl_client.commands.Command import Command
 
 
 class Transactions(Command):
 
     def __init__(self, arguments):
+        """
+        Account transactions command constructor
+        Initializes _address
+
+        :param arguments: contains list of arguments parsed from docopt (list)
+        """
+
         super().__init__(arguments)
         self._address = self._arguments["<address>"]
 
     def run(self):
+        """
+        Run method for account transactions command.
+        Requests transactions of an address using bpl_api.
+        If response from request is successful then displays transactions using a ascii_table.Table object.
+        If response from request is unsuccessful then a BPLClientAccountsException is raised.
+
+        :return: (None)
+        """
+
         bpl_transactions = Client(NetworkConfig.get_peer()).api("transactions")
         NetworkInterface.use(NetworkConfig.get_peer())
 
@@ -65,6 +81,15 @@ class Transactions(Command):
         ]))
 
     def _parse_transactions(self, transactions):
+        """
+        Returns transactions in a format of
+        {id:[...], timestamp:[...], senderId:[...], recipientId:[...], amount:[...], fee:[...], confirmations:[...]}.
+        This format is more beneficial for ascii_table.Table
+
+        :param transactions: list of transactions from response (list)
+        :return: (dict)
+        """
+
         parsed_transactions = {k: [] for k in [
             "id", "timestamp", "senderId", "recipientId", "amount", "fee", "confirmations"
         ]}
