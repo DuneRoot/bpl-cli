@@ -16,6 +16,17 @@ from bpl_client.commands.Command import Command
 class Setup(Command):
 
     def run(self):
+        """
+        Run method for network config setup command.
+        Prints prompt requesting peer address and port, peer address user input is validated using a regular expression.
+        A similar process is applied to the network version and begin epoch prompts.
+        If validation fails at a given state then a BPLClientNetworkException is raised.
+        Otherwise the nethash is fetch from the peer address the user entered and is stored in the network config json
+        file. The config is then displayed using a ascii_table.Table object
+
+        :return: (None)
+        """
+
         peer_address = input("Enter peer address and port: ")
 
         if not regular_expression.match(PEER_ADDRESS_REGEX, peer_address):
@@ -69,4 +80,4 @@ class Setup(Command):
 
         config = SortedDictionary(config)
         print("\nNetwork Config")
-        print(Table([config.headers(), config.values()]))
+        print(Table([config.names(), config.values()]))
