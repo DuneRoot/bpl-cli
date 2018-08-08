@@ -3,8 +3,10 @@ from bpl_client.Client import Client
 
 def main():
     """
-    Main CLI entrypoint
+    Command Line Interface entry point
+
     :return: None
     """
 
     Client()
+    
