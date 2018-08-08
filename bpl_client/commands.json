@@ -1,0 +1,84 @@
+[
+  {
+    "Module Identifier": "network.config.Setup",
+    "Class Identifier": "Setup",
+    "Conditions": [
+      "network",
+      "config",
+      "setup"
+    ]
+  },
+  {
+    "Module Identifier": "network.config.Show",
+    "Class Identifier": "Show",
+    "Conditions": [
+      "network",
+      "config",
+      "show"
+    ]
+  },
+  {
+    "Module Identifier": "network.Status",
+    "Class Identifier": "Status",
+    "Conditions": [
+      "network",
+      "status"
+    ]
+  },
+  {
+    "Module Identifier": "account.Status",
+    "Class Identifier": "Status",
+    "Conditions": [
+      "account",
+      "status"
+    ]
+  },
+  {
+    "Module Identifier": "account.Transactions",
+    "Class Identifier": "Transactions",
+    "Conditions": [
+      "account",
+      "transactions"
+    ]
+  },
+  {
+    "Module Identifier": "account.Send",
+    "Class Identifier": "Send",
+    "Conditions": [
+      "account",
+      "send"
+    ]
+  },
+  {
+    "Module Identifier": "account.Vote",
+    "Class Identifier": "Vote",
+    "Conditions": [
+      "account",
+      "vote"
+    ]
+  },
+  {
+    "Module Identifier": "account.Delegate",
+    "Class Identifier": "Delegate",
+    "Conditions": [
+      "account",
+      "delegate"
+    ]
+  },
+  {
+    "Module Identifier": "message.Sign",
+    "Class Identifier": "Sign",
+    "Conditions": [
+      "message",
+      "sign"
+    ]
+  },
+  {
+    "Module Identifier": "message.Verify",
+    "Class Identifier": "Verify",
+    "Conditions": [
+      "message",
+      "verify"
+    ]
+  }
+]
