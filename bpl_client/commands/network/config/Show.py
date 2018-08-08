@@ -8,8 +8,14 @@ from bpl_client.commands.Command import Command
 class Show(Command):
 
     def run(self):
+        """
+        Run method for network config show command.
+        Reads the network config and then displays it in a ascii_table.Table object
+
+        :return: (None)
+        """
         config = SortedDictionary(NetworkConfig.get_config())
 
         print("\nNetwork Config")
-        print(Table([config.headers(), config.values()]))
+        print(Table([config.names(), config.values()]))
 
