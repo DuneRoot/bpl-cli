@@ -22,7 +22,7 @@ This is an easy-to-use Python Command Line Interface (CLI) client for interactin
 - [x] Network status
 - [x] Network config setup
 - [x] Showing network config
-- [ ] Showing network peers
+- [x] Showing network peers
 
 ### Command Identity
 - [x] Constructor
