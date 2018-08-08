@@ -4,6 +4,7 @@ BPL Client
 Usage:
   bpl-cli network config setup
   bpl-cli network config show
+  bpl-cli network peers
   bpl-cli network status
   bpl-cli account status <address>
   bpl-cli account transactions <address>
