@@ -19,7 +19,7 @@ Options:
   --version                 Show version.
 
 Help:
-  For help using this client, please see ...
+  For help using this client, please see https://github.com/DuneRoot/bpl-cli
 """
 
 from importlib import import_module
