@@ -26,6 +26,14 @@
     ]
   },
   {
+    "Module Identifier": "network.Peers",
+    "Class Identifier": "Peers",
+    "Conditions": [
+      "network",
+      "peers"
+    ]
+  },
+  {
     "Module Identifier": "account.Status",
     "Class Identifier": "Status",
     "Conditions": [
