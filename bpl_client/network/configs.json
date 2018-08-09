@@ -1,0 +1,1 @@
+{"mainnet": {"peer address": "13.56.163.57:9030", "begin epoch": "2017-03-21 13:00:00", "nethash": "7bfb2815effb43592ccdd4fd0f657c082a7b318eed12f6396cc174d8578293c3", "version": 25}, "testnet": {"peer address": "35.180.64.83:9028", "begin epoch": "2017-03-21 13:00:00", "nethash": "f9b98b78d2012ba8fd75538e3569bbc071ce27f0f93414218bc34bc72bdeb3db", "version": 25}}
