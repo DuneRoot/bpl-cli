@@ -93,7 +93,7 @@ class SortedDictionary:
         if not len(value):
             return ""
 
-        return value[0]
+        return value[0][1]
 
     def __delitem__(self, key):
         """
