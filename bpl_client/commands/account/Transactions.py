@@ -32,7 +32,7 @@ class Transactions(Command):
         """
 
         bpl_transactions = Client(NetworkConfig.get_peer()).api("transactions")
-        NetworkInterface.use(NetworkConfig.get_peer())
+        NetworkInterface.use(NetworkConfig.get_config_identifier())
 
         response = bpl_transactions.all_transactions({
             "senderId": self._address,
