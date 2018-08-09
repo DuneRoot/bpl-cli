@@ -35,7 +35,7 @@ class Delegate(Command):
         """
 
         bpl_transactions = Client(NetworkConfig.get_peer()).api("transactions")
-        NetworkInterface.use(NetworkConfig.get_peer())
+        NetworkInterface.use(NetworkConfig.get_config_identifier())
 
         secret_passphrase = getpass(prompt="Enter secret passphrase: ")
 
