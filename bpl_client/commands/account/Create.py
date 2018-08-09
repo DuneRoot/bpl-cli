@@ -23,7 +23,7 @@ class Create(Command):
         :return: (None)
         """
 
-        NetworkInterface.use(NetworkConfig.get_peer())
+        NetworkInterface.use(NetworkConfig.get_config_identifier())
 
         secret_passphrase = Mnemonic("english").generate(256)
 
