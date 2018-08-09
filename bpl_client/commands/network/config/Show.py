@@ -14,8 +14,9 @@ class Show(Command):
 
         :return: (None)
         """
+
         config = SortedDictionary(NetworkConfig.get_config())
 
-        print("\nNetwork Config")
+        print("\nNetwork Config ({0})".format(NetworkConfig.get_config_identifier()))
         print(Table([config.names(), config.values()]))
 
