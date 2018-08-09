@@ -38,7 +38,7 @@ class Vote(Command):
         """
 
         bpl_transactions = Client(NetworkConfig.get_peer()).api("transactions")
-        NetworkInterface.use(NetworkConfig.get_peer())
+        NetworkInterface.use(NetworkConfig.get_config_identifier())
 
         if not self._verify_delegate():
             raise BPLClientAccountsException({
