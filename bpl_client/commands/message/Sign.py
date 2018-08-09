@@ -33,7 +33,7 @@ class Sign(Command):
         :return: (None)
         """
 
-        NetworkInterface.use(NetworkConfig.get_peer())
+        NetworkInterface.use(NetworkConfig.get_config_identifier())
 
         secret_passphrase = getpass(prompt="Enter secret passphrase: ")
 
