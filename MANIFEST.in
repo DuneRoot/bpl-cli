@@ -1,1 +1,2 @@
 include bpl_client/commands.json
+include bpl_client/network/configs.json
