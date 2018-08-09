@@ -20,7 +20,8 @@ This is an easy-to-use Python Command Line Interface (CLI) client for interactin
 
 ### Network
 - [x] Network status
-- [x] Network config setup
+- [x] Network config new
+- [x] Network config use
 - [x] Showing network config
 - [x] Showing network peers
 
@@ -76,26 +77,58 @@ Help:
   For help using this client, please see https://github.com/DuneRoot/bpl-cli
 ```
 
-### Network config setup
+### Network config new
 
-To setup the network config the command ``bpl-cli network config setup`` must be used. It should be noted that if the network config has not been setup and a different command is used then a ``BPLClientNetworkException`` is raised.
+To create a new custom network config the command ``bpl-cli network config new`` must be used. It should be noted that if the network config has not been selected using `network config new` or `network config use` and a different command is used then a ``BPLClientNetworkException`` is raised.
 
 ```sh
-C:\>bpl-cli network config setup
-Enter peer address and port: 35.180.73.154:9028
+C:\>bpl-cli network config new
+Enter config identifier: testnet_01
+Enter peer address and port: 35.180.64.83:9028
 Enter version: 25
 Enter begin epoch: 2017-03-21 13:00:00
 
-Network Config
+Network Config (testnet_01)
  +--------------+------------------------------------------------------------------+
  |     Name     |                              Value                               |
  +--------------+------------------------------------------------------------------+
  | version      | 25                                                               |
- | peer address | 35.180.73.154:9028                                               |
+ | peer address | 35.180.64.83:9028                                                |
  | begin epoch  | 2017-03-21 13:00:00                                              |
  | nethash      | f9b98b78d2012ba8fd75538e3569bbc071ce27f0f93414218bc34bc72bdeb3db |
  +--------------+------------------------------------------------------------------+
+
  ```
+
+### Network config use
+
+To use or select a default or custom network config the command ``bpl-cli network config use`` must be used. It should be noted that if an invalid config identifier is inputted then a `BPLClientNetworkException` is raised.
+
+```sh
+C:\>bpl-cli network config use
+
+Config Identifiers
+ +------------+
+ |  Configs   |
+ +------------+
+ | testnet1   |
+ | testnet    |
+ | mainnet    |
+ | testnet_01 |
+ +------------+
+
+Enter config identifier: mainnet
+
+Network Config (mainnet)
+ +--------------+------------------------------------------------------------------+
+ |     Name     |                              Value                               |
+ +--------------+------------------------------------------------------------------+
+ | version      | 25                                                               |
+ | peer address | 13.56.163.57:9030                                                |
+ | begin epoch  | 2017-03-21 13:00:00                                              |
+ | nethash      | 7bfb2815effb43592ccdd4fd0f657c082a7b318eed12f6396cc174d8578293c3 |
+ +--------------+------------------------------------------------------------------+
+```
 
 ### Transferring BPL
 
