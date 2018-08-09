@@ -2,7 +2,8 @@
 BPL Client
 
 Usage:
-  bpl-cli network config setup
+  bpl-cli network config new
+  bpl-cli network config use
   bpl-cli network config show
   bpl-cli network peers
   bpl-cli network status
