@@ -1,11 +1,20 @@
 [
   {
-    "Module Identifier": "network.config.Setup",
-    "Class Identifier": "Setup",
+    "Module Identifier": "network.config.New",
+    "Class Identifier": "New",
     "Conditions": [
       "network",
       "config",
-      "setup"
+      "new"
+    ]
+  },
+  {
+    "Module Identifier": "network.config.Use",
+    "Class Identifier": "Use",
+    "Conditions":[
+      "network",
+      "config",
+      "use"
     ]
   },
   {
