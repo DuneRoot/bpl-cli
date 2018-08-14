@@ -5,9 +5,9 @@ with open("README.md", "r") as file:
 
 requires = [
     "docopt",
-    "bpl-lib>=0.0.14",
-    "bpl-api",
-    "ascii-table",
+    "bpl-lib>=0.1.0",
+    "bpl-api>=0.1.0",
+    "ascii-table>=0.1.0",
     "mnemonic"
 ]
 
@@ -24,7 +24,7 @@ packages = [
 
 setuptools.setup(
     name="bpl-client",
-    version="0.0.8",
+    version="0.1.0",
     author="Alistair O'Brien",
     author_email="alistair.o'brien@ellesmere.com",
     description="A CLI Client for the Blockpool Blockchain.",
