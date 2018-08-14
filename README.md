@@ -36,17 +36,7 @@ This is an easy-to-use Python Command Line Interface (CLI) client for interactin
 ## Installation
 
 ```sh
-python -m pip install --no-cache-dir --index-url https://test.pypi.org/simple/ bpl-client
-```
-
-Note: package has been uploaded to test.pypi. Some dependencies might not be able to be install (e.g. base58) due to this. If this occurs use:
-```sh
-pip install base58
-```
-
-Then
-```sh
-python -m pip install --no-cache-dir --index-url https://test.pypi.org/simple/ bpl-client
+python -m pip install bpl-client
 ```
 
 ## Usage
@@ -132,7 +122,7 @@ Network Config (mainnet)
 
 ### Transferring BPL
 
-To transfer BPL the command ``bpl-cli account send <amount> <address>`` must be used. A prompt for the secret passphrase is then displayed, which masks the input. 
+To transfer BPL the command ``bpl-cli account send <amount> <address>`` must be used. A prompt for the secret passphrase is then displayed, which masks the input.
 
 ```sh
 C:\>bpl-cli account send 0.1 BFCKaUEkmG8ULYitaharStcdn7ijuDxxpK
@@ -142,7 +132,7 @@ Sending 0.1 BPL to BFCKaUEkmG8ULYitaharStcdn7ijuDxxpK.
 Transaction sent successfully with id 295fb4d1c128f6319a2ebfe688dd762c6d15fc1e40ccde92ca531cce25d4ae74.
 ```
 
-### Listing transactions 
+### Listing transactions
 
 To list the transactions of an address, the command ``bpl-cli account transactions <address>`` must be used.
 
