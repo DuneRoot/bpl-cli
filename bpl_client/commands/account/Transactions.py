@@ -1,3 +1,5 @@
+import sys
+
 from bpl_lib.network import Network as NetworkInterface
 from ascii_table import Table
 from bpl_lib.time import Time
@@ -41,10 +43,11 @@ class Transactions(Command):
         })
 
         if not response["success"]:
-            raise BPLClientAccountsException({
+            print(BPLClientAccountsException({
                 "message": "Failed to fetch transactions.",
                 "error": response["error"]
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         transactions = self._parse_transactions(response["transactions"])
 
