@@ -1,4 +1,5 @@
 from getpass import getpass
+import sys
 
 from bpl_lib.transactions import Vote as VoteTransaction
 from bpl_lib.network import Network as NetworkInterface
@@ -41,17 +42,18 @@ class Vote(Command):
         NetworkInterface.use(NetworkConfig.get_config_identifier())
 
         if not self._verify_delegate():
-            raise BPLClientAccountsException({
+            print(BPLClientAccountsException({
                 "message": "Invalid delegate.",
                 "delegate": self._username
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         votes = ["+" + self._get_public_key()]
         secret_passphrase = getpass(prompt="Enter secret passphrase: ")
 
         if input("Confirm (y/n): ").lower() not in ["y", "yes"]:
             print("Aborted.")
-            return
+            sys.exit(0)
 
         transaction = VoteTransaction.generate(votes, secret_passphrase).to_dict()
         response = bpl_transactions.send(transaction)
