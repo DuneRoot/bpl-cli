@@ -1,3 +1,5 @@
+import sys
+
 from ascii_table import Table
 from bpl_api import Client
 
@@ -22,10 +24,11 @@ class Status(Command):
         status = Client(NetworkConfig.get_peer()).api("blocks").status()
 
         if not status["success"]:
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "cannot get status from network",
                 "error": status["error"]
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         status.pop("success", None)
         status["reward"] = status["reward"]["reward"]
