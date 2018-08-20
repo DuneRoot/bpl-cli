@@ -1,4 +1,5 @@
 import json
+import sys
 
 from ascii_table import Table
 
@@ -32,11 +33,12 @@ class Use(Command):
         config_identifier = input("\nEnter config identifier: ")
 
         if not NetworkConfig.validate_identifier(config_identifier):
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "invalid config identifier",
                 "identifiers": NetworkConfig.get_config_identifiers(),
                 "identifier": config_identifier
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         write_file(NETWORK_CONFIG, json.dumps({
             "identifier": config_identifier
