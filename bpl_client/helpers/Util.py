@@ -13,7 +13,7 @@ def read_file(file_location):
         with open(file_location, "r") as file:
             return file.read()
     except FileNotFoundError:
-        print("Failed to read {0}", file=sys.stderr)
+        print("[ERROR] Error: FileNotFoundError, Response: Failed to read {0}".format(file_location), file=sys.stderr)
         return ""
 
 
@@ -26,8 +26,15 @@ def write_file(file_location, data):
     :return: (None)
     """
 
-    with open(file_location, "w") as file:
-        file.write(data)
+    try:
+        with open(file_location, "w") as file:
+            file.write(data)
+    except PermissionError:
+        print(
+            "[ERROR] Error: PermissionError, Response: Failed to write to "
+          + "{0}. Please configure write access for {0}".format(file_location), file=sys.stderr
+        )
+        sys.exit(13)
 
 
 class SortedDictionary:
