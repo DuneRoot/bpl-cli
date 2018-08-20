@@ -1,3 +1,5 @@
+import sys
+
 from ascii_table import Table
 from bpl_api import Client
 
@@ -22,10 +24,11 @@ class Peers(Command):
         peers = Client(NetworkConfig.get_peer()).api("peers").all_peers(limit=100)
 
         if not peers["success"]:
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "cannot get peers from network",
                 "error": peers["error"]
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         filtered_peers = sorted(map(lambda x: "{0}:{1}".format(x["ip"], x["port"]), filter(
             lambda x: x["status"] == "OK", peers["peers"]
