@@ -1,4 +1,5 @@
 import json
+import sys
 
 from bpl_client.helpers.Exceptions import BPLClientNetworkException
 from bpl_client.helpers.Constants import NETWORK_CONFIG, NETWORK_CONFIGS
@@ -69,16 +70,24 @@ class NetworkConfig:
 
         try:
             config_identifier = json.loads(read_file(NETWORK_CONFIG))["identifier"]
+        except PermissionError:
+            print(BPLClientNetworkException({
+                "message": "client has insufficient permissions to read config.json. "
+                         + "Please configure read access of config.json"
+            }), file=sys.stderr)
+            sys.exit(13)
         except:
-            raise BPLClientNetworkException({"message": (
+            print(BPLClientNetworkException({"message": (
                 "network config not setup. Please use bpl-cli network config new or bpl-cli network config use."
-            )})
+            )}), file=sys.stderr)
+            sys.exit(1)
 
         if not NetworkConfig.validate_identifier(config_identifier):
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "invalid config identifier",
                 "config identifiers": NetworkConfig.get_config_identifiers(),
                 "config identifier": config_identifier
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         return config_identifier
