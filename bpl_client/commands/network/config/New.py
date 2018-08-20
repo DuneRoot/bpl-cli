@@ -1,6 +1,7 @@
 import re as regular_expression
 from datetime import datetime
 import json
+import sys
 
 from bpl_lib.helpers import BPLNetworkException
 from bpl_lib.network import Network
@@ -33,46 +34,51 @@ class New(Command):
         config_identifier = input("Enter config identifier: ")
 
         if NetworkConfig.validate_identifier(config_identifier):
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "invalid config identifier. config identifier has already been used.",
                 "config identifiers": NetworkConfig.get_config_identifiers(),
                 "config identifier": config_identifier
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         peer_address = input("Enter peer address and port: ")
 
         if not regular_expression.match(PEER_ADDRESS_REGEX, peer_address):
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "invalid peer address.",
                 "format": "[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}:[0-9]{1,5}",
                 "peer": peer_address
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         version = input("Enter version: ")
 
         if not regular_expression.match(VERSION_REGEX, version):
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "invalid network version.",
                 "format": "[0-9]{1,3}",
                 "version": version
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         begin_epoch = input("Enter begin epoch: ")
 
         if not regular_expression.match(EPOCH_REGEX, begin_epoch):
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "invalid begin epoch.",
                 "format": "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}",
                 "begin epoch": begin_epoch
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         try:
             nethash = Client(peer_address).api("blocks").nethash()["nethash"]
         except:
-            raise BPLClientNetworkException({
+            print(BPLClientNetworkException({
                 "message": "failed to fetch nethash.",
                 "reason": "failed to successfully connect to peer."
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         configs = NetworkConfig.get_configs()
         configs[config_identifier] = {
