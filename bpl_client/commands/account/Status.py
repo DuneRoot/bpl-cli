@@ -1,3 +1,5 @@
+import sys
+
 from ascii_table import Table
 from bpl_api import Client
 
@@ -42,10 +44,11 @@ class Status(Command):
         account = self._bpl_accounts.account(self._address)
 
         if not account["success"]:
-            raise BPLClientAccountsException({
+            print(BPLClientAccountsException({
                 "message": "Address unknown on the blockchain.",
                 "address": self._address
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         account = SortedDictionary({
             str(k): str(v) for k, v in account["account"].items()
@@ -67,10 +70,11 @@ class Status(Command):
         votes = self._bpl_accounts.votes(self._address)
 
         if not votes["success"]:
-            raise BPLClientAccountsException({
+            print(BPLClientAccountsException({
                 "message": "Delegate unknown on the blockchain.",
                 "error": votes["error"]
-            })
+            }), file=sys.stderr)
+            sys.exit(1)
 
         for vote in votes["delegates"]:
             delegate = SortedDictionary(vote)
