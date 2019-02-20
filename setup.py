@@ -26,7 +26,7 @@ setuptools.setup(
     name="bpl-client",
     version="0.1.1",
     author="Alistair O'Brien",
-    author_email="alistair.o'brien@ellesmere.com",
+    author_email="alistair@duneroot.co.uk",
     description="A CLI Client for the Blockpool Blockchain.",
     long_description=long_description,
     include_package_data=True,
