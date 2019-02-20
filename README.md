@@ -157,7 +157,7 @@ Transactions (Address: B8a5sk4SBzWTxURX3sw5iMy7py26QgA4NY)
 
 ## Security or Errors
 
-If you discover a security vulnerability or error within this package, please email [me](mailto:alistair.o'brien@ellesmere.com) or message me on the [BPL discord](https://discordapp.com/invite/67HxSKq).
+If you discover a security vulnerability or error within this package, please email [me](mailto:alistair@duneroot.co.uk) or message me on the [BPL discord](https://discordapp.com/invite/67HxSKq).
 
 
 ## Credits
